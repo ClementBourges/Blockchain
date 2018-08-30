@@ -1,0 +1,20 @@
+<body>
+
+
+<table>
+   <tr>
+      <th>Date</th><th>Formateur</th><th>Volume</th><th>Signature</th>
+   </tr>
+
+   <% for (var i = 0; i < tabl.length; i++) { %>
+    <tr>
+      <td align=center width=150><%= tabl[i].Record.Date %></td>
+      <td align=center width=150><%= tabl[i].Record.Formateur %></td>
+      <td align=center width=150><%= tabl[i].Record.Volume %></td>
+      <td align=center width=150>&#10008;</td>
+    </tr>
+   <% } %>
+</table>
+<input type="button" value="Actualiser" onclick="document.location.href='/';">
+<input type="button" value="Ajouter une formation" onclick="document.location.href='ajouter';">
+</body>
