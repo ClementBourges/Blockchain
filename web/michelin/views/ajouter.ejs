@@ -1,29 +1,46 @@
-<html>
-	<head>
-		<meta charset="utf-8" />
-  		<link rel="stylesheet" type="text/css" href="block.css"/>
-	</head>
+<!doctype html>
+<html lang="en">
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+</head>
 	<body>
-		<div id="inscription">
-    		<form method="post" action="formulaire">
- 				<fieldset>
-  					<legend>Nouvelle formation</legend>
+		<div class="container">
 
-  					<label for="date">Date :</label>
-  					<input type="date" name="date" value="2018-01-01"><br>
+		<div class="form-sec">
+			<br>
+		  <h4>Nouvelle formation</h4>
 
-  					<label for="formateur">Formateur :</label>
-  					<input type="text" name="formateur" value="Formateur"><br>
+		 <form  method="post" action="formulaire" onsubmit="return(validate());" novalidate="novalidate">
+       <div class="form-group">
+         <label for="formateur">Identifiant :</label>
+         <input type="text" class="form-control" name="ident" value="Identifiant">
+       </div>
+		    <div class="form-group">
+					<label for="date">Date :</label>
+					<input type="date" class="form-control" name="date" value="2018-01-01">
+		    </div>
+		    <div class="form-group">
+					<label for="formateur">Formateur :</label>
+					<input type="text" class="form-control" name="formateur" value="Formateur">
+		    </div>
 
-  					<label for="volume">Volume :</label>
-  					<input type="number" name="volume" value="1"><br>
+		    <div class="form-group">
+					<label for="volume">Volume :</label>
+					<input type="number" class="form-control" name="volume" value="1">
+		    </div>
 
-            <input type="submit" value="Envoyer">
- 				</fieldset>
-			</form>
-		</div><!-- INSCRIPTION -->
+		    <button type="submit" class="btn btn-default" value="Retour" onclick="document.location.href='/';">Submit</button>
+		  </form>
+		  </div>
+
+
+		</div>
 	</body>
-	<input type="button" value="Retour" onclick="document.location.href='/';">
 
 
 </html>

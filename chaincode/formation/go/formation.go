@@ -44,9 +44,11 @@ type SmartContract struct {
 
 // Define the car structure, with 4 properties.  Structure tags are used by encoding/json library
 type Formation struct {
+	Ident string `json:"Ident"`
 	Date   string `json:"Date"`
 	Formateur  string `json:"Formateur"`
 	Volume string `json:"Volume"`
+	Signature string `json:"Signature"`
 }
 
 /*
@@ -69,6 +71,8 @@ func (s *SmartContract) Invoke(APIstub shim.ChaincodeStubInterface) sc.Response 
 		return s.createFormation(APIstub, args)
 	} else if function == "queryAllFormations" {
 		return s.queryAllFormations(APIstub)
+	}else if function == "signFormation" {
+		return s.signFormation(APIstub, args)
 	}else if function == "queryByFormateur" {
 		return s.queryByFormateur(APIstub, args)
 	}
@@ -76,29 +80,17 @@ func (s *SmartContract) Invoke(APIstub shim.ChaincodeStubInterface) sc.Response 
 	return shim.Error("Invalid Smart Contract function name.")
 }
 
-func (s *SmartContract) queryFormation(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
-	fmt.Println("Coucou")
-
-	if len(args) != 1 {
-		return shim.Error("Incorrect number of arguments. Expecting 1")
-	}
-
-	formationAsBytes, _ := APIstub.GetState(args[0])
-	jsonResp := "{\"Res\":\"" + string(formationAsBytes) + "\"}"
-	fmt.Printf("Query Response:%s\n", jsonResp)
-	return shim.Success(formationAsBytes)
-}
 
 func (s *SmartContract) Init(APIstub shim.ChaincodeStubInterface) sc.Response {
 	var err error
 	formations := []Formation{
-		Formation{Date: "2017-01-01", Formateur: "Alice", Volume: "7"},
-		Formation{Date: "2017-01-01", Formateur: "Bob", Volume: "1"},
-		Formation{Date: "2017-01-01", Formateur: "Charlie", Volume: "2"},
-		Formation{Date: "2017-01-01", Formateur: "Dave", Volume: "1.5"},
-		Formation{Date: "2017-01-01", Formateur: "Eve", Volume: "0.5"},
-		Formation{Date: "2017-01-01", Formateur: "Frank", Volume: "2"},
-		Formation{Date: "2017-01-01", Formateur: "Greg", Volume: "1"},
+		Formation{Ident:"AL-01-7", Date: "2017-01-01", Formateur: "Alice", Volume: "7", Signature: "\u26A0"},
+		Formation{Ident:"BO-01-1", Date: "2017-01-01", Formateur: "Bob", Volume: "1", Signature: "\u26A0"},
+		Formation{Ident:"CH-01-2", Date: "2017-01-01", Formateur: "Charlie", Volume: "2", Signature: "\u26A0"},
+		Formation{Ident:"DA-01-1.5", Date: "2017-01-01", Formateur: "Dave", Volume: "1.5", Signature: "\u26A0"},
+		Formation{Ident:"EV-01-0.5", Date: "2017-01-01", Formateur: "Eve", Volume: "0.5", Signature: "\u26A0"},
+		Formation{Ident:"FR-01-2", Date: "2017-01-01", Formateur: "Frank", Volume: "2", Signature: "\u26A0"},
+		Formation{Ident:"GR-01-1", Date: "2017-01-01", Formateur: "Greg", Volume: "1", Signature: "\u26A0"},
 	}
 
 	i := 0
@@ -116,13 +108,28 @@ func (s *SmartContract) Init(APIstub shim.ChaincodeStubInterface) sc.Response {
 	return shim.Success(nil)
 }
 
-func (s *SmartContract) createFormation(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
 
-	if len(args) != 4 {
-		return shim.Error("Incorrect number of arguments. Expecting 4")
+func (s *SmartContract) queryFormation(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+	fmt.Println("Coucou")
+
+	if len(args) != 1 {
+		return shim.Error("Incorrect number of arguments. Expecting 1")
 	}
 
-	var formation = Formation{Date: args[1], Formateur: args[2], Volume: args[3]}
+	formationAsBytes, _ := APIstub.GetState(args[0])
+	jsonResp := "{\"Res\":\"" + string(formationAsBytes) + "\"}"
+	fmt.Printf("Query Response:%s\n", jsonResp)
+	return shim.Success(formationAsBytes)
+}
+
+
+func (s *SmartContract) createFormation(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+
+	if len(args) != 5 {
+		return shim.Error("Incorrect number of arguments. Expecting 5")
+	}
+
+	var formation = Formation{Ident: args[1], Date: args[2], Formateur: args[3], Volume: args[4], Signature: "\u26A0"}
 
 	formationAsBytes, _ := json.Marshal(formation)
 	APIstub.PutState(args[0], formationAsBytes)
@@ -171,6 +178,22 @@ func (s *SmartContract) queryAllFormations(APIstub shim.ChaincodeStubInterface) 
 	fmt.Printf("- queryAllFormatios:\n%s\n", buffer.String())
 
 	return shim.Success(buffer.Bytes())
+}
+
+func (s *SmartContract) signFormation(APIstub shim.ChaincodeStubInterface ,args[]string) sc.Response {
+
+	if len(args) != 1 {
+		return shim.Error("Incorrect number of arguments. Expecting 1")
+	}
+
+	formationAsBytes, _ := APIstub.GetState(args[0])
+	forma := Formation{}
+	json.Unmarshal([]byte(formationAsBytes), &forma)
+	forma.Signature="\u2718"
+	formationAsBytes, _ = json.Marshal(forma)
+	APIstub.PutState(args[0], formationAsBytes)
+
+	return shim.Success(nil)
 }
 
 func (s *SmartContract) queryByFormateur(APIstub shim.ChaincodeStubInterface ,args[]string) sc.Response {

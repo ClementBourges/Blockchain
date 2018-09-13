@@ -47,6 +47,7 @@ console.log('Store path:'+store_path);
 var tx_id = null;
 
 //-------------------------BLOCKCHAIN---------------------------------------
+app.use(express.static('../public'))
 
 app.get('/', function(req, res) {
 
@@ -76,13 +77,12 @@ app.get('/', function(req, res) {
 
                 // queryCar chaincode function - requires 1 argument, ex: args: ['CAR4'],
                 // queryAllCars chaincode function - requires no arguments , ex: args: [''],
-                const request = {
+                var request = {
                         //targets : --- letting this default to the peers assigned to the channel
                         chaincodeId: 'formation',
                         fcn: 'queryAllFormations',
                         args: ['']
                 };
-                console.log(request);
                 // send the query proposal to the peer
                 return channel.queryByChaincode(request);
         }).then((query_responses) => {
@@ -93,14 +93,11 @@ app.get('/', function(req, res) {
                                 console.error("error from query = ", query_responses[0]);
                         } else {
                                   var tab=JSON.parse(query_responses[0].toString());
-                                  console.log(tab)
                                   var i=0;
                                   var trouve=false;
                                   while(trouve!=true && i <999)
                                   {
                                     i++;
-                                    console.log("i=",i)
-
                                     var k=0;
                                     var bool=0
                                     while(k<999 && bool==0)
@@ -116,7 +113,6 @@ app.get('/', function(req, res) {
 
                                     if (k==999)
                                     {
-                                        console.log("Trouvé");
                                         trouve=true;
                                     }
                                   }
@@ -134,20 +130,9 @@ app.get('/', function(req, res) {
 
 
 
-app.get('/ajouter', function(req, res) {
-    res.render('ajouter.ejs');
-});
-
-
-app.post('/formulaire', (req, res) => {
-  var formation = {
-    date: req.body.date,
-    formateur: req.body.formateur,
-    volume: req.body.volume
-  };
-
-
-
+app.post('/signe', (req, res) => {
+  var key = req.body.key_to_sign
+  console.log(key)
   //
   var member_user = null;
   var tx_id = null;
@@ -186,11 +171,12 @@ app.post('/formulaire', (req, res) => {
   	var request = {
   		//targets: let default to the peer assigned to the client
   		chaincodeId: 'formation',
-  		fcn: 'createFormation',
-  		args: [clee,formation.date,formation.formateur,formation.volume],
+  		fcn: 'signFormation',
+  		args: [key],
   		chainId: 'mychannel',
   		txId: tx_id
   	};
+    console.log(request);
 
   	// send the transaction proposal to the peers
   	return channel.sendTransactionProposal(request);
@@ -229,6 +215,7 @@ app.post('/formulaire', (req, res) => {
   		// is required bacause the event registration must be signed
   		let event_hub = fabric_client.newEventHub();
   		//event_hub.setPeerAddr('grpc://localhost:7053');
+      event_hub.setPeerAddr('grpc://localhost:7053');
 
   		// using resolve the promise so that result status may be processed
   		// under the then clause rather than having the catch clause process

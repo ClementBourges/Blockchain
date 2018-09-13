@@ -1,0 +1,257 @@
+postgres://clem:1234@127.0.0.1:5432/fabricexplorer
+
+Property config.syncStartDate set to  2018/01/01
+
+
+Please open web browser to access ：http://localhost:1234/
+
+
+pid is 5696
+
+
+Insert sql is INSERT INTO peer  ( "requests","channel_genesis_hash","server_hostname" ) VALUES( $1,$2,$3  ) RETURNING *;
+INSERT ID: 8
+Insert sql is INSERT INTO chaincodes  ( "name","version","path","channel_genesis_hash" ) VALUES( $1,$2,$3,$4  ) RETURNING *;
+INSERT ID: 17
+Insert sql is INSERT INTO blocks  ( "blocknum","prehash","datahash","blockhash","txcount","channel_genesis_hash","createdt" ) VALUES( $1,$2,$3,$4,$5,$6,$7  ) RETURNING *;
+INSERT ID: 37
+Insert sql is INSERT INTO channel  ( "name","createdt","blocks","trans","channel_hash","channel_genesis_hash" ) VALUES( $1,$2,$3,$4,$5,$6  ) RETURNING *;
+INSERT ID: 10
+Insert sql is INSERT INTO transactions  ( "blockid","txhash","createdt","chaincodename","chaincode_id","status","creator_msp_id","endorser_msp_id","tx_response","type","read_set","write_set","channel_genesis_hash","validation_code","envelope_signature","payload_extension","creator_nonce","chaincode_proposal_input","endorser_signature","creator_id_bytes","payload_proposal_hash","endorser_id_bytes" ) VALUES( $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22  ) RETURNING *;
+INSERT ID: 47
+Insert sql is INSERT INTO blocks  ( "blocknum","prehash","datahash","blockhash","txcount","channel_genesis_hash","createdt" ) VALUES( $1,$2,$3,$4,$5,$6,$7  ) RETURNING *;
+INSERT ID: 38
+Insert sql is INSERT INTO transactions  ( "blockid","txhash","createdt","chaincodename","chaincode_id","status","creator_msp_id","endorser_msp_id","tx_response","type","read_set","write_set","channel_genesis_hash","validation_code","envelope_signature","payload_extension","creator_nonce","chaincode_proposal_input","endorser_signature","creator_id_bytes","payload_proposal_hash","endorser_id_bytes" ) VALUES( $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22  ) RETURNING *;
+INSERT ID: 48
+Insert sql is INSERT INTO blocks  ( "blocknum","prehash","datahash","blockhash","txcount","channel_genesis_hash","createdt" ) VALUES( $1,$2,$3,$4,$5,$6,$7  ) RETURNING *;
+INSERT ID: 39
+Insert sql is INSERT INTO transactions  ( "blockid","txhash","createdt","chaincodename","chaincode_id","status","creator_msp_id","endorser_msp_id","tx_response","type","read_set","write_set","channel_genesis_hash","validation_code","envelope_signature","payload_extension","creator_nonce","chaincode_proposal_input","endorser_signature","creator_id_bytes","payload_proposal_hash","endorser_id_bytes" ) VALUES( $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22  ) RETURNING *;
+INSERT ID: 49
+Successfully received the block event[object Object]
+Successfully received the block event[object Object]
+Insert sql is INSERT INTO blocks  ( "blocknum","prehash","datahash","blockhash","txcount","channel_genesis_hash","createdt" ) VALUES( $1,$2,$3,$4,$5,$6,$7  ) RETURNING *;
+INSERT ID: 40
+Insert sql is INSERT INTO transactions  ( "blockid","txhash","createdt","chaincodename","chaincode_id","status","creator_msp_id","endorser_msp_id","tx_response","type","read_set","write_set","channel_genesis_hash","validation_code","envelope_signature","payload_extension","creator_nonce","chaincode_proposal_input","endorser_signature","creator_id_bytes","payload_proposal_hash","endorser_id_bytes" ) VALUES( $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22  ) RETURNING *;
+INSERT ID: 50
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+Received kill signal, shutting down gracefully
+Closed out remaining connections
+postgres://clem:1234@127.0.0.1:5432/fabricexplorer
+
+Property config.syncStartDate set to  2018/01/01
+
+
+Please open web browser to access ：http://localhost:1234/
+
+
+pid is 5268
+
+
+Insert sql is INSERT INTO peer  ( "requests","channel_genesis_hash","server_hostname" ) VALUES( $1,$2,$3  ) RETURNING *;
+INSERT ID: 9
+Insert sql is INSERT INTO chaincodes  ( "name","version","path","channel_genesis_hash" ) VALUES( $1,$2,$3,$4  ) RETURNING *;
+INSERT ID: 18
+Insert sql is INSERT INTO blocks  ( "blocknum","prehash","datahash","blockhash","txcount","channel_genesis_hash","createdt" ) VALUES( $1,$2,$3,$4,$5,$6,$7  ) RETURNING *;
+Insert sql is INSERT INTO channel  ( "name","createdt","blocks","trans","channel_hash","channel_genesis_hash" ) VALUES( $1,$2,$3,$4,$5,$6  ) RETURNING *;
+INSERT ID: 41
+INSERT ID: 11
+Insert sql is INSERT INTO transactions  ( "blockid","txhash","createdt","chaincodename","chaincode_id","status","creator_msp_id","endorser_msp_id","tx_response","type","read_set","write_set","channel_genesis_hash","validation_code","envelope_signature","payload_extension","creator_nonce","chaincode_proposal_input","endorser_signature","creator_id_bytes","payload_proposal_hash","endorser_id_bytes" ) VALUES( $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22  ) RETURNING *;
+INSERT ID: 51
+Insert sql is INSERT INTO blocks  ( "blocknum","prehash","datahash","blockhash","txcount","channel_genesis_hash","createdt" ) VALUES( $1,$2,$3,$4,$5,$6,$7  ) RETURNING *;
+INSERT ID: 42
+Insert sql is INSERT INTO transactions  ( "blockid","txhash","createdt","chaincodename","chaincode_id","status","creator_msp_id","endorser_msp_id","tx_response","type","read_set","write_set","channel_genesis_hash","validation_code","envelope_signature","payload_extension","creator_nonce","chaincode_proposal_input","endorser_signature","creator_id_bytes","payload_proposal_hash","endorser_id_bytes" ) VALUES( $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22  ) RETURNING *;
+INSERT ID: 52
+Insert sql is INSERT INTO blocks  ( "blocknum","prehash","datahash","blockhash","txcount","channel_genesis_hash","createdt" ) VALUES( $1,$2,$3,$4,$5,$6,$7  ) RETURNING *;
+INSERT ID: 43
+Insert sql is INSERT INTO transactions  ( "blockid","txhash","createdt","chaincodename","chaincode_id","status","creator_msp_id","endorser_msp_id","tx_response","type","read_set","write_set","channel_genesis_hash","validation_code","envelope_signature","payload_extension","creator_nonce","chaincode_proposal_input","endorser_signature","creator_id_bytes","payload_proposal_hash","endorser_id_bytes" ) VALUES( $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22  ) RETURNING *;
+INSERT ID: 53
+Successfully received the block event[object Object]
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+Successfully received the block event[object Object]
+Insert sql is INSERT INTO blocks  ( "blocknum","prehash","datahash","blockhash","txcount","channel_genesis_hash","createdt" ) VALUES( $1,$2,$3,$4,$5,$6,$7  ) RETURNING *;
+INSERT ID: 44
+Broadcast >> {"title":"Block 3 added to: mychannel","channelName":"mychannel","type":"block","message":"Block 3 established with 1 tx","time":"2018-09-04T20:10:35.000Z","txcount":1,"datahash":"4a69fab47bfd657e32cddcc28b0b4c551429184c595839fe25596111fc198d77"}
+Insert sql is INSERT INTO transactions  ( "blockid","txhash","createdt","chaincodename","chaincode_id","status","creator_msp_id","endorser_msp_id","tx_response","type","read_set","write_set","channel_genesis_hash","validation_code","envelope_signature","payload_extension","creator_nonce","chaincode_proposal_input","endorser_signature","creator_id_bytes","payload_proposal_hash","endorser_id_bytes" ) VALUES( $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17,$18,$19,$20,$21,$22  ) RETURNING *;
+INSERT ID: 54
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+cat: /home/clem/Bureau/formation/blockchain/chaincode/formation/go: est un dossier
+Received kill signal, shutting down gracefully
+Closed out remaining connections

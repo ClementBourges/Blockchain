@@ -8,13 +8,23 @@
         "events": "grpc://127.0.0.1:7053",
         "server-hostname": "peer0.org1.example.com",
         "tls_cacerts":
-          "../blockchain/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt"
+          "/home/clem/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt"
       },
+      "org2": {
+        "name": "peerOrg2",
+        "mspid": "Org2MSP",
+        "peer1": {
+          "requests": "grpc://127.0.0.1:9051",
+          "events": "grpc://127.0.0.1:9053",
+          "server-hostname": "peer0.org2.example.com",
+          "tls_cacerts":
+            "/home/clem/fabric-samples/first-network/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt"
+        },
       "admin": {
         "key":
-          "../blockchain/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore",
+          "/home/clem/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore",
         "cert":
-          "../blockchain/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts"
+          "/home/clem/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts"
       }
     }
   },
@@ -25,7 +35,7 @@
       "server-hostname": "orderer.example.com",
       "requests": "grpc://127.0.0.1:7050",
       "tls_cacerts":
-        "../blockchain/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt"
+        "/home/clem/fabric-samples/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt"
     }
   ],
   "keyValueStore": "/tmp/fabric-client-kvs",

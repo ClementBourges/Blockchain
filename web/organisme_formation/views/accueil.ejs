@@ -1,22 +1,133 @@
+<!doctype html>
+<html lang="en">
 <head>
-<h1>Organisme de formation</h1>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
 </head>
-
 <body>
-<table>
-   <tr>
-      <th>Date</th><th>Formateur</th><th>Volume</th><th>Signature</th>
-   </tr>
 
-   <% for (var i = 0; i < tabl.length; i++) { %>
-    <tr>
-      <td align=center width=150><%= tabl[i].Record.Date %></td>
-      <td align=center width=150><%= tabl[i].Record.Formateur %></td>
-      <td align=center width=150><%= tabl[i].Record.Volume %></td>
-      <td align=center width=150>&#10008;</td>
-    </tr>
-   <% } %>
-</table>
-<input type="button" value="Actualiser" onclick="document.location.href='/';">
-<input type="button" value="Ajouter une formation" onclick="document.location.href='ajouter';">
-</body>
+<div class="container">
+	<div class="row">
+        <div class="col-md-12">
+          <br>
+        <h1>Organisme de formation</h1>
+        <div class="table-responsive">
+              <table id="filtre" class="table">
+                <tr>
+                  <td><input type="button" value="Actualiser" class="btn btn-default" onclick="document.location.href='/';"></td>
+                  <td><input type="text" id="myInput_Id" onkeyup="myFunction_Id()" placeholder="Rechercher une formation ..."></td>
+                 <td><label for="date">Voir après:&nbsp;&nbsp;</label><input type="date" id="myInput_Date" onChange="myFunction_Date()" value=date placeholder="Voir après"></td>
+                 <td><label for="sign" align=center> <FONT COLOR="RED" SIZE="6"><%= "\u26A0"%></FONT></label><input type="checkbox" id="myInput_Sign" onChange="myFunction_Sign(this)" value="sign" /></td>
+                 </tr>
+       </div>
+        <div class="table-responsive">
+              <table id="myTable" class="table table-bordred table-striped">
+                  <thead align=center>
+                   <th>Identifiant</th><th>Date</th><th>Formateur</th><th>Volume</th><th>Fichier</th><th>Signature</th>
+                  </thead>
+                  <tbody>
+                    <% for (var i = 0; i < tabl.length; i++) { %>
+                    <tr>
+                      <td align=center width=150><%= tabl[i].Record.Ident %></td>
+                      <td align=center width=150><%= tabl[i].Record.Date %></td>
+                      <td align=center width=150><%= tabl[i].Record.Formateur %></td>
+                      <td align=center width=150><%= tabl[i].Record.Volume %></td>
+                      <td align=center width=150><a href=<%='../feuilles/'+ tabl[i].Key +'.jpg'%>><FONT SIZE="6">&#128196;</FONT></></td>
+                      <td align=center width=150> <% if(tabl[i].Record.Signature != "\u2718") { %>
+                                                    <FONT COLOR="RED" SIZE="6"><%= tabl[i].Record.Signature %></FONT></td>
+                                                    <% }
+                                                   else {%>
+                                                    <FONT COLOR="GREEN" SIZE="6"><%= tabl[i].Record.Signature %></FONT></td>
+                                                <%  } %>
+                    </tr>
+                   <% } %>
+                  </tbody>
+
+              </table>
+              <input type="button" value="Actualiser" class="btn btn-default" onclick="document.location.href='/';">
+              <input type="button" value="Ajouter une formation" class="btn btn-default" onclick="document.location.href='ajouter';">
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+  </body>
+</html>
+
+
+<script>
+function myFunction_Id() {
+  // Declare variables
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput_Id");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+function myFunction_Date() {
+  // Declare variables
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput_Date");
+  filter = input.value;
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[1];
+    if (td) {
+      var x = new Date(td.innerHTML);
+      var y = new Date(filter);
+      if (x>y) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+function myFunction_Sign(check) {
+    // Declare variables
+  if(check.checked)
+  {
+  var input, filter, table, tr, td, i;
+  input = document.getElementById("myInput_Sign");
+  filter = input.value;
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 1; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[5];
+    if (td) {
+      if (td.innerHTML.indexOf("RED")>0) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
+  }
+}
+else {
+  {
+    window.location.replace("/");
+  }
+}
+}
+</script>

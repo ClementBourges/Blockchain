@@ -26,6 +26,8 @@ var fabric_client = new Fabric_Client();
 
 var bodyParser = require('body-parser');
 var express = require('express');
+const fileUpload = require('express-fileupload');
+
 var app = express();
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -46,7 +48,8 @@ var store_path = "./hfc-key-store"
 console.log('Store path:'+store_path);
 var tx_id = null;
 
-
+//-------------------------BLOCKCHAIN---------------------------------------
+app.use(express.static('../public'))
 app.get('/', function(req, res) {
 
 
@@ -81,7 +84,6 @@ app.get('/', function(req, res) {
                         fcn: 'queryAllFormations',
                         args: ['']
                 };
-                console.log(request);
                 // send the query proposal to the peer
                 return channel.queryByChaincode(request);
         }).then((query_responses) => {
@@ -92,14 +94,11 @@ app.get('/', function(req, res) {
                                 console.error("error from query = ", query_responses[0]);
                         } else {
                                   var tab=JSON.parse(query_responses[0].toString());
-                                  console.log(tab)
                                   var i=0;
                                   var trouve=false;
                                   while(trouve!=true && i <999)
                                   {
                                     i++;
-                                    console.log("i=",i)
-
                                     var k=0;
                                     var bool=0
                                     while(k<999 && bool==0)
@@ -137,13 +136,27 @@ app.get('/ajouter', function(req, res) {
     res.render('ajouter.ejs');
 });
 
-
+app.use(fileUpload());
 
 app.post('/formulaire', (req, res) => {
+  if (!req.files)
+    return res.status(400).send('No files were uploaded.');
+
+  // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
+  let sampleFile = req.files.sampleFile;
+
+  // Use the mv() method to place the file somewhere on your server
+  sampleFile.mv('../public/feuilles/'+'FOR'+ cledispo.toString()+'.jpg', function(err) {
+    if (err)
+      return res.status(500).send(err);
+  });
+
   var formation = {
+    ident: req.body.ident,
     date: req.body.date,
     formateur: req.body.formateur,
-    volume: req.body.volume
+    volume: req.body.volume,
+    signature: "\u26A0"
   };
 
 
@@ -187,7 +200,7 @@ app.post('/formulaire', (req, res) => {
   		//targets: let default to the peer assigned to the client
   		chaincodeId: 'formation',
   		fcn: 'createFormation',
-  		args: [clee,formation.date,formation.formateur,formation.volume],
+  		args: [clee,formation.ident,formation.date,formation.formateur,formation.volume],
   		chainId: 'mychannel',
   		txId: tx_id
   	};
@@ -229,6 +242,7 @@ app.post('/formulaire', (req, res) => {
   		// is required bacause the event registration must be signed
   		let event_hub = fabric_client.newEventHub();
   		//event_hub.setPeerAddr('grpc://localhost:7053');
+      event_hub.setPeerAddr('grpc://localhost:9053');
 
   		// using resolve the promise so that result status may be processed
   		// under the then clause rather than having the catch clause process
