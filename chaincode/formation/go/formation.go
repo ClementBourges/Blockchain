@@ -45,6 +45,7 @@ type SmartContract struct {
 // Define the car structure, with 4 properties.  Structure tags are used by encoding/json library
 type Formation struct {
 	Ident string `json:"Ident"`
+	Description string `json:Description`
 	Date   string `json:"Date"`
 	Formateur  string `json:"Formateur"`
 	Volume string `json:"Volume"`
@@ -84,13 +85,11 @@ func (s *SmartContract) Invoke(APIstub shim.ChaincodeStubInterface) sc.Response 
 func (s *SmartContract) Init(APIstub shim.ChaincodeStubInterface) sc.Response {
 	var err error
 	formations := []Formation{
-		Formation{Ident:"AL-01-7", Date: "2017-01-01", Formateur: "Alice", Volume: "7", Signature: "\u26A0"},
-		Formation{Ident:"BO-01-1", Date: "2017-01-01", Formateur: "Bob", Volume: "1", Signature: "\u26A0"},
-		Formation{Ident:"CH-01-2", Date: "2017-01-01", Formateur: "Charlie", Volume: "2", Signature: "\u26A0"},
-		Formation{Ident:"DA-01-1.5", Date: "2017-01-01", Formateur: "Dave", Volume: "1.5", Signature: "\u26A0"},
-		Formation{Ident:"EV-01-0.5", Date: "2017-01-01", Formateur: "Eve", Volume: "0.5", Signature: "\u26A0"},
-		Formation{Ident:"FR-01-2", Date: "2017-01-01", Formateur: "Frank", Volume: "2", Signature: "\u26A0"},
-		Formation{Ident:"GR-01-1", Date: "2017-01-01", Formateur: "Greg", Volume: "1", Signature: "\u26A0"},
+		Formation{Ident:"EL/B084", Description: " Risques et mesures de prévention électrique<br>- Analyser les risques électriques <br>- Identifier les moyens de protections collectifs et individuels", Date: "2017-01-01", Formateur: "Alice", Volume: "7", Signature: "\u26A0"},
+		Formation{Ident:"EL/A045", Description: " Réaliser un câblage électrique<br>- Acquérir des notions réglementaires en câblage<br>- Comprendre et interpréter les schémas électriques<br>- Réaliser des câblages électriques d'installations simples de type locaux d'habitation et armoire machine", Date: "2017-01-01", Formateur: "Bob", Volume: "1", Signature: "\u26A0"},
+		Formation{Ident:"EL/A042", Description: " Règles applicables au courant triphasé<br>-- Différencier et mesurer les grandeurs de base en courant alternatif triphasé<br>- Reconnaître les matériels électriques triphasés<br>- Concevoir et câbler des montages électriques usuels", Date: "2017-01-01", Formateur: "Charlie", Volume: "2", Signature: "\u26A0"},
+		Formation{Ident:"PI/S052", Description: " Savoir évacuer en sécurité en cas d'incendie<br>- Organiser et diriger une évacuation<br>- Mettre en œuvre les consignes et procédures de l’établissement", Date: "2017-01-01", Formateur: "Dave", Volume: "1.5", Signature: "\u26A0"},
+		Formation{Ident:"PR/C004", Description: " Évaluer la pénibilité au travail<br>- Connaître les enjeux d’une démarche de prévention de la pénibilité au travail<br>- Connaître les évolutions réglementaires sur la thématique de la pénibilité<br>- Identifier les conditions de mise en œuvre de méthodologies d’évaluation des facteurs de risques", Date: "2017-01-01", Formateur: "Eve", Volume: "0.5", Signature: "\u26A0"},
 	}
 
 	i := 0
@@ -125,11 +124,11 @@ func (s *SmartContract) queryFormation(APIstub shim.ChaincodeStubInterface, args
 
 func (s *SmartContract) createFormation(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
 
-	if len(args) != 5 {
-		return shim.Error("Incorrect number of arguments. Expecting 5")
+	if len(args) != 6 {
+		return shim.Error("Incorrect number of arguments. Expecting 6")
 	}
 
-	var formation = Formation{Ident: args[1], Date: args[2], Formateur: args[3], Volume: args[4], Signature: "\u26A0"}
+	var formation = Formation{Ident: args[1], Description: args[2], Date: args[3], Formateur: args[4], Volume: args[5], Signature: "\u26A0"}
 
 	formationAsBytes, _ := json.Marshal(formation)
 	APIstub.PutState(args[0], formationAsBytes)

@@ -14,6 +14,8 @@ var util = require('util');
 var os = require('os');
 var http = require('http');
 var https = require('https');
+var crypto = require('crypto');
+
 
 var fs = require('fs');
 
@@ -45,7 +47,6 @@ channel.addOrderer(orderer);
 
 var member_user = null;
 var store_path = "./hfc-key-store"
-console.log('Store path:'+store_path);
 var tx_id = null;
 
 //-------------------------BLOCKCHAIN---------------------------------------
@@ -70,7 +71,6 @@ app.get('/', function(req, res) {
                 return fabric_client.getUserContext('user2', true);
         }).then((user_from_store) => {
                 if (user_from_store && user_from_store.isEnrolled()) {
-                        console.log('Successfully loaded user2 from persistence');
                         member_user = user_from_store;
                 } else {
                         throw new Error('Failed to get user2.... run registerUser.js');
@@ -87,7 +87,6 @@ app.get('/', function(req, res) {
                 // send the query proposal to the peer
                 return channel.queryByChaincode(request);
         }).then((query_responses) => {
-                console.log("Query has completed, checking results");
                 // query_responses could have more than one  results if there multiple peers were used as targets
                 if (query_responses && query_responses.length == 1) {
                         if (query_responses[0] instanceof Error) {
@@ -114,7 +113,6 @@ app.get('/', function(req, res) {
 
                                     if (k==999)
                                     {
-                                        console.log("Trouvé");
                                         trouve=true;
                                     }
                                   }
@@ -150,9 +148,14 @@ app.post('/formulaire', (req, res) => {
     if (err)
       return res.status(500).send(err);
   });
-
+  console.log("req.files:"+req.files)
+  console.log(sampleFile.data.buffer.toString())
+  var algo = 'sha256';
+  //var hash= crypto.createHash(algo).update(req.files.sampleFile).digest('hex');
+  //console.log(hash);
   var formation = {
     ident: req.body.ident,
+    description: req.body.description,
     date: req.body.date,
     formateur: req.body.formateur,
     volume: req.body.volume,
@@ -181,7 +184,6 @@ app.post('/formulaire', (req, res) => {
   	return fabric_client.getUserContext('user2', true);
   }).then((user_from_store) => {
   	if (user_from_store && user_from_store.isEnrolled()) {
-  		console.log('Successfully loaded user2 from persistence');
   		member_user = user_from_store;
   	} else {
   		throw new Error('Failed to get user2.... run registerUser.js');
@@ -189,18 +191,16 @@ app.post('/formulaire', (req, res) => {
 
   	// get a transaction id object based on the current user assigned to fabric client
   	tx_id = fabric_client.newTransactionID();
-  	console.log("Assigning transaction_id: ", tx_id._transaction_id);
-
   	// createCar chaincode function - requires 5 args, ex: args: ['CAR12', 'Honda', 'Accord', 'Black', 'Tom'],
   	// changeCarOwner chaincode function - requires 2 args , ex: args: ['CAR10', 'Dave'],
   	// must send the proposal to endorsing peers
-    console.log(cledispo)
     var clee='FOR'+ cledispo.toString()
+    console.log("On rajoute la formation:" + clee)
   	var request = {
   		//targets: let default to the peer assigned to the client
   		chaincodeId: 'formation',
   		fcn: 'createFormation',
-  		args: [clee,formation.ident,formation.date,formation.formateur,formation.volume],
+  		args: [clee,formation.ident, formation.description, formation.date,formation.formateur,formation.volume],
   		chainId: 'mychannel',
   		txId: tx_id
   	};
@@ -214,14 +214,10 @@ app.post('/formulaire', (req, res) => {
   	if (proposalResponses && proposalResponses[0].response &&
   		proposalResponses[0].response.status === 200) {
   			isProposalGood = true;
-  			console.log('Transaction proposal was good');
   		} else {
   			console.error('Transaction proposal was bad');
   		}
   	if (isProposalGood) {
-  		console.log(util.format(
-  			'Successfully sent Proposal and received ProposalResponse: Status - %s, message - "%s"',
-  			proposalResponses[0].response.status, proposalResponses[0].response.message));
 
   		// build up the request for the orderer to have the transaction committed
   		var request = {
@@ -266,7 +262,6 @@ app.post('/formulaire', (req, res) => {
   					console.error('The transaction was invalid, code = ' + code);
   					resolve(return_status); // we could use reject(new Error('Problem with the tranaction, event status ::'+code));
   				} else {
-  					console.log('The transaction has been committed on peer ' + event_hub.getPeerAddr());
   					resolve(return_status);
   				}
   			}, (err) => {
@@ -282,16 +277,13 @@ app.post('/formulaire', (req, res) => {
   		throw new Error('Failed to send Proposal or receive valid response. Response null or status is not 200. exiting...');
   	}
   }).then((results) => {
-  	console.log('Send transaction promise and event listener promise have completed');
   	// check the results in the order the promises were added to the promise all list
   	if (results && results[0] && results[0].status === 'SUCCESS') {
-  		console.log('Successfully sent transaction to the orderer.');
   	} else {
   		console.error('Failed to order the transaction. Error code: ' + results[0].status);
   	}
 
   	if(results && results[1] && results[1].event_status === 'VALID') {
-  		console.log('Successfully committed the change to the ledger by the peer');
   	} else {
   		console.log('Transaction failed to be committed to the ledger due to ::'+results[1].event_status);
   	}
@@ -306,4 +298,4 @@ app.use(function(req, res, next){
     res.status(404).send('Page introuvable !');
 });
 
-app.listen(8081);
+app.listen(8082);

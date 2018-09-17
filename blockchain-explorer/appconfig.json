@@ -1,5 +1,5 @@
 {
   "host": "localhost",
-  "port": "1234",
+  "port": "8080",
   "license": "Apache-2.0"
 }

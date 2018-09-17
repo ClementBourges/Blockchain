@@ -29,8 +29,8 @@ ed09a52dba0e hyperledger/fabric-orderer:1.1.0 "orderer" About an hour ago Up Abo
 			"name": "peerOrg1",
 			"mspid": "Org1MSP",
 			"peer1": {
-				"requests": "grpc://127.0.0.1:7150",
-				"events": "grpc://127.0.0.1:7050",
+				"requests": "grpcs://127.0.0.1:7150",
+				"events": "grpcs://127.0.0.1:7050",
 				"server-hostname": "peer0.org1.example.com",
 				"tls_cacerts": "/opt/cello/fabric-1.1/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt"
 			},			
@@ -45,7 +45,7 @@ ed09a52dba0e hyperledger/fabric-orderer:1.1.0 "orderer" About an hour ago Up Abo
 				{
 				"mspid": "OrdererMSP",
 				"server-hostname":"orderer.example.com",
-				"requests":"grpc://127.0.0.1:8050",
+				"requests":"grpcs://127.0.0.1:8050",
 				"tls_cacerts":"/opt/cello/fabric-1.1/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt"
 				}
 				],

@@ -10,34 +10,36 @@
 </head>
 <body>
 
-<div class="container">
+<div class="container-fluid">
 	<div class="row">
         <div class="col-md-12">
           <br>
-        <h1>Organisme de formation</h1>
+        <h1 align=center>Organisme de formation</h1>
+        <br>
         <div class="table-responsive">
               <table id="filtre" class="table">
                 <tr>
                   <td><input type="button" value="Actualiser" class="btn btn-default" onclick="document.location.href='/';"></td>
-                  <td><input type="text" id="myInput_Id" onkeyup="myFunction_Id()" placeholder="Rechercher une formation ..."></td>
+                  <td><input type="text" id="myInput_Id" onkeyup="myFunction_Id()" placeholder="Rechercher un code ..."></td>
                  <td><label for="date">Voir après:&nbsp;&nbsp;</label><input type="date" id="myInput_Date" onChange="myFunction_Date()" value=date placeholder="Voir après"></td>
-                 <td><label for="sign" align=center> <FONT COLOR="RED" SIZE="6"><%= "\u26A0"%></FONT></label><input type="checkbox" id="myInput_Sign" onChange="myFunction_Sign(this)" value="sign" /></td>
+                 <td><label for="sign" align=center>Filtrer : &nbsp;&nbsp;<FONT COLOR="RED" SIZE="6"><%= "\u26A0"%></FONT></label><input type="checkbox" id="myInput_Sign" onChange="myFunction_Sign(this)" value="sign" /></td>
                  </tr>
        </div>
         <div class="table-responsive">
               <table id="myTable" class="table table-bordred table-striped">
                   <thead align=center>
-                   <th>Identifiant</th><th>Date</th><th>Formateur</th><th>Volume</th><th>Fichier</th><th>Signature</th>
+                   <th>Code formation</th><th>Description</th><th>Date</th><th>Formateur</th><th>Volume</th><th>Fichier</th><th>Signature</th>
                   </thead>
                   <tbody>
                     <% for (var i = 0; i < tabl.length; i++) { %>
                     <tr>
-                      <td align=center width=150><%= tabl[i].Record.Ident %></td>
-                      <td align=center width=150><%= tabl[i].Record.Date %></td>
-                      <td align=center width=150><%= tabl[i].Record.Formateur %></td>
-                      <td align=center width=150><%= tabl[i].Record.Volume %></td>
-                      <td align=center width=150><a href=<%='../feuilles/'+ tabl[i].Key +'.jpg'%>><FONT SIZE="6">&#128196;</FONT></></td>
-                      <td align=center width=150> <% if(tabl[i].Record.Signature != "\u2718") { %>
+                      <td align=center><%= tabl[i].Record.Ident %></td>
+                      <td><%- tabl[i].Record.Description%></td>
+                      <td align=center><%= tabl[i].Record.Date %></td>
+                      <td align=center><%= tabl[i].Record.Formateur %></td>
+                      <td align=center><%= tabl[i].Record.Volume %></td>
+                      <td align=center><a href=<%='../feuilles/'+ tabl[i].Key +'.jpg'%>><FONT SIZE="6">&#128196;</FONT></></td>
+                      <td align=center> <% if(tabl[i].Record.Signature != "\u2718") { %>
                                                     <FONT COLOR="RED" SIZE="6"><%= tabl[i].Record.Signature %></FONT></td>
                                                     <% }
                                                    else {%>
@@ -90,7 +92,7 @@ function myFunction_Date() {
 
   // Loop through all table rows, and hide those who don't match the search query
   for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[1];
+    td = tr[i].getElementsByTagName("td")[2];
     if (td) {
       var x = new Date(td.innerHTML);
       var y = new Date(filter);
@@ -114,7 +116,7 @@ function myFunction_Sign(check) {
 
   // Loop through all table rows, and hide those who don't match the search query
   for (i = 1; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[5];
+    td = tr[i].getElementsByTagName("td")[6];
     if (td) {
       if (td.innerHTML.indexOf("RED")>0) {
         tr[i].style.display = "";

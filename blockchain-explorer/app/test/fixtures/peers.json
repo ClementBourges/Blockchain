@@ -2,19 +2,19 @@
   "status": 200,
   "peers": [
     {
-      "requests": "grpc://127.0.0.1:7051",
+      "requests": "grpcs://127.0.0.1:7051",
       "server_hostname": "peer0.org1.example.com"
     },
     {
-      "requests": "grpc://127.0.0.1:8051",
+      "requests": "grpcs://127.0.0.1:8051",
       "server_hostname": "peer1.org1.example.com"
     },
     {
-      "requests": "grpc://127.0.0.1:9051",
+      "requests": "grpcs://127.0.0.1:9051",
       "server_hostname": "peer0.org2.example.com"
     },
     {
-      "requests": "grpc://127.0.0.1:10051",
+      "requests": "grpcs://127.0.0.1:10051",
       "server_hostname": "peer1.org2.example.com"
     }
   ]

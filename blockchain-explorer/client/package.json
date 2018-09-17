@@ -23,7 +23,7 @@
     "nock": "^9.3.3",
     "pg": "^7.4.1",
     "prop-types": "^15.6.2",
-    "react": "^16.4.2",
+    "react": "^16.4.1",
     "react-copy-to-clipboard": "^5.0.1",
     "react-d3-graph": "^1.0.1",
     "react-datepicker": "^1.6.0",

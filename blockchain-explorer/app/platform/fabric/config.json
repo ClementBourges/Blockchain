@@ -1,48 +1,88 @@
 {
-  "network-config": {
-    "org1": {
-      "name": "peerOrg1",
-      "mspid": "Org1MSP",
-      "peer1": {
-        "requests": "grpc://127.0.0.1:7051",
-        "events": "grpc://127.0.0.1:7053",
-        "server-hostname": "peer0.org1.example.com",
-        "tls_cacerts":
-          "/home/clem/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt"
+  "network-configs": {
+    "network-1": {
+      "version": "1.0",
+      "clients": {
+        "client-1": {
+          "tlsEnable": false,
+          "organization": "Org1MSP",
+          "channel": "mychannel",
+          "credentialStore": {
+            "path": "../web/michelin/hfc-key-store",
+            "cryptoStore": {
+              "path": "/home/clem/fabric-samples/first-network/crypto-config"
+            }
+          }
+        }
       },
-      "org2": {
-        "name": "peerOrg2",
-        "mspid": "Org2MSP",
-        "peer1": {
-          "requests": "grpc://127.0.0.1:9051",
-          "events": "grpc://127.0.0.1:9053",
-          "server-hostname": "peer0.org2.example.com",
-          "tls_cacerts":
-            "/home/clem/fabric-samples/first-network/crypto-config/peerOrganizations/org2.example.com/peers/peer0.org2.example.com/tls/ca.crt"
+      "channels": {
+        "mychannel": {
+          "peers": {
+            "peer0.org1.example.com": {}
+          },
+          "connection": {
+            "timeout": {
+              "peer": {
+                "endorser": "6000",
+                "eventHub": "6000",
+                "eventReg": "6000"
+              }
+            }
+          }
+        }
+      },
+      "organizations": {
+        "Org1MSP": {
+          "mspid": "Org1MSP",
+          "fullpath": false,
+          "adminPrivateKey": {
+            "path":
+              "/home/clem/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore"
+          },
+          "signedCert": {
+            "path":
+              "/home/clem/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts"
+          }
         },
-      "admin": {
-        "key":
-          "/home/clem/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/keystore",
-        "cert":
-          "/home/clem/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/users/Admin@org1.example.com/msp/signcerts"
+        "Org2MSP": {
+          "mspid": "Org2MSP",
+          "adminPrivateKey": {
+            "path":
+              "/home/clem/fabric-samples/first-network/crypto-config/peerOrganizations/org2.example.com/users/Admin@org2.example.com/msp/keystore"
+          }
+        },
+        "OrdererMSP": {
+          "mspid": "OrdererMSP",
+          "adminPrivateKey": {
+            "path":
+              "/home/clem/fabric-samples/first-network/crypto-config/ordererOrganizations/example.com/users/Admin@example.com/msp/keystore"
+          }
+        }
+      },
+      "peers": {
+        "peer0.org1.example.com": {
+          "tlsCACerts": {
+            "path":
+              "/home/clem/fabric-samples/first-network/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt"
+          },
+          "url": "grpc://localhost:7051",
+          "eventUrl": "grpc://localhost:7053",
+          "grpcOptions": {
+            "ssl-target-name-override": "peer0.org1.example.com"
+          }
+        },
+        
+        "peer0.org2.example.com": {
+          "url": "grpc://localhost:9051"
+        }
+      },
+      "orderers": {
+        "orderer.example.com": {
+          "url": "grpc://localhost:7050"
+        }
       }
     }
   },
-  "channel": "mychannel",
-  "orderers": [
-    {
-      "mspid": "OrdererMSP",
-      "server-hostname": "orderer.example.com",
-      "requests": "grpc://127.0.0.1:7050",
-      "tls_cacerts":
-        "/home/clem/fabric-samples/first-network/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt"
-    }
-  ],
-  "keyValueStore": "/tmp/fabric-client-kvs",
   "configtxgenToolPath": "../../bin",
-  "SYNC_START_DATE_FORMAT": "YYYY/MM/DD",
-  "syncStartDate": "2018/01/01",
-  "eventWaitTime": "30000",
-  "license": "Apache-2.0",
-  "version": "1.1"
+  "license": "Apache-2.0"
 }

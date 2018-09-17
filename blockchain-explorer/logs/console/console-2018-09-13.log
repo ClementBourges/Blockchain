@@ -1,0 +1,205 @@
+postgres://hppoc:password@127.0.0.1:5432/fabricexplorer
+
+
+Please open web browser to access ：http://localhost:8080/
+
+
+pid is 27459
+
+
+postgres://hppoc:password@127.0.0.1:5432/fabricexplorer
+
+Sync process is started for the network : [network-1] and client : [client-1]
+
+
+Synchronizer pid is 27487
+
+
+read_set length 364
+write_set size >>>>>>>>> :  0.5007877349853516 MB
+Received kill signal, shutting down gracefully
+<<<<<<<<<<<<<<<<<<<<<<<<<< Closing explorer  >>>>>>>>>>>>>>>>>>>>>
+<<<<<<<<<<<<<<<<<<<<<<<<<< Closing client processor >>>>>>>>>>>>>>>>>>>>>
+Closed out connections
+<<<<<<<<<<<<<<<<<<<<<<<<<< Closing client processor >>>>>>>>>>>>>>>>>>>>>
+postgres://hppoc:password@127.0.0.1:5432/fabricexplorer
+
+
+Please open web browser to access ：http://localhost:8080/
+
+
+pid is 28088
+
+
+postgres://hppoc:password@127.0.0.1:5432/fabricexplorer
+
+Sync process is started for the network : [network-1] and client : [client-1]
+
+
+Synchronizer pid is 28118
+
+
+read_set length 364
+write_set size >>>>>>>>> :  0.5007877349853516 MB
+db error { error: terminating connection due to administrator command
+    at Connection.parseE (/home/clem/fabric-samples/first-network/blockchain-explorer/node_modules/pg/lib/connection.js:545:11)
+    at Connection.parseMessage (/home/clem/fabric-samples/first-network/blockchain-explorer/node_modules/pg/lib/connection.js:370:19)
+    at Socket.<anonymous> (/home/clem/fabric-samples/first-network/blockchain-explorer/node_modules/pg/lib/connection.js:113:22)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:597:20)
+  name: 'error',
+  length: 116,
+  severity: 'FATAL',
+  code: '57P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'postgres.c',
+  line: '2884',
+  routine: 'ProcessInterrupts' }
+<<<<<<<<<<<<<<<<<<<<<<<<<< Synchronizer Error >>>>>>>>>>>>>>>>>>>>>
+{ error: terminating connection due to administrator command
+    at Connection.parseE (/home/clem/fabric-samples/first-network/blockchain-explorer/node_modules/pg/lib/connection.js:545:11)
+    at Connection.parseMessage (/home/clem/fabric-samples/first-network/blockchain-explorer/node_modules/pg/lib/connection.js:370:19)
+    at Socket.<anonymous> (/home/clem/fabric-samples/first-network/blockchain-explorer/node_modules/pg/lib/connection.js:113:22)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:597:20)
+  name: 'error',
+  length: 116,
+  severity: 'FATAL',
+  code: '57P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'postgres.c',
+  line: '2884',
+  routine: 'ProcessInterrupts' }
+<<<<<<<<<<<<<<<<<<<<<<<<<< Closing client processor >>>>>>>>>>>>>>>>>>>>>
+db error { error: terminating connection due to administrator command
+    at Connection.parseE (/home/clem/fabric-samples/first-network/blockchain-explorer/node_modules/pg/lib/connection.js:545:11)
+    at Connection.parseMessage (/home/clem/fabric-samples/first-network/blockchain-explorer/node_modules/pg/lib/connection.js:370:19)
+    at Socket.<anonymous> (/home/clem/fabric-samples/first-network/blockchain-explorer/node_modules/pg/lib/connection.js:113:22)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:597:20)
+  name: 'error',
+  length: 116,
+  severity: 'FATAL',
+  code: '57P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'postgres.c',
+  line: '2884',
+  routine: 'ProcessInterrupts' }
+<<<<<<<<<<<<<<<<<<<<<<<<<< Explorer Error >>>>>>>>>>>>>>>>>>>>>
+{ error: terminating connection due to administrator command
+    at Connection.parseE (/home/clem/fabric-samples/first-network/blockchain-explorer/node_modules/pg/lib/connection.js:545:11)
+    at Connection.parseMessage (/home/clem/fabric-samples/first-network/blockchain-explorer/node_modules/pg/lib/connection.js:370:19)
+    at Socket.<anonymous> (/home/clem/fabric-samples/first-network/blockchain-explorer/node_modules/pg/lib/connection.js:113:22)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at addChunk (_stream_readable.js:263:12)
+    at readableAddChunk (_stream_readable.js:250:11)
+    at Socket.Readable.push (_stream_readable.js:208:10)
+    at TCP.onread (net.js:597:20)
+  name: 'error',
+  length: 116,
+  severity: 'FATAL',
+  code: '57P01',
+  detail: undefined,
+  hint: undefined,
+  position: undefined,
+  internalPosition: undefined,
+  internalQuery: undefined,
+  where: undefined,
+  schema: undefined,
+  table: undefined,
+  column: undefined,
+  dataType: undefined,
+  constraint: undefined,
+  file: 'postgres.c',
+  line: '2884',
+  routine: 'ProcessInterrupts' }
+db error Error: Connection terminated unexpectedly
+    at Connection.con.once (/home/clem/fabric-samples/first-network/blockchain-explorer/node_modules/pg/lib/client.js:179:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Connection.emit (events.js:208:7)
+    at Socket.<anonymous> (/home/clem/fabric-samples/first-network/blockchain-explorer/node_modules/pg/lib/connection.js:122:10)
+    at emitNone (events.js:111:20)
+    at Socket.emit (events.js:208:7)
+    at endReadableNT (_stream_readable.js:1064:12)
+    at _combinedTickCallback (internal/process/next_tick.js:138:11)
+    at process._tickCallback (internal/process/next_tick.js:180:9)
+<<<<<<<<<<<<<<<<<<<<<<<<<< Explorer Error >>>>>>>>>>>>>>>>>>>>>
+Error: Connection terminated unexpectedly
+    at Connection.con.once (/home/clem/fabric-samples/first-network/blockchain-explorer/node_modules/pg/lib/client.js:179:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Connection.emit (events.js:208:7)
+    at Socket.<anonymous> (/home/clem/fabric-samples/first-network/blockchain-explorer/node_modules/pg/lib/connection.js:122:10)
+    at emitNone (events.js:111:20)
+    at Socket.emit (events.js:208:7)
+    at endReadableNT (_stream_readable.js:1064:12)
+    at _combinedTickCallback (internal/process/next_tick.js:138:11)
+    at process._tickCallback (internal/process/next_tick.js:180:9)
+db error Error: Connection terminated unexpectedly
+    at Connection.con.once (/home/clem/fabric-samples/first-network/blockchain-explorer/node_modules/pg/lib/client.js:179:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Connection.emit (events.js:208:7)
+    at Socket.<anonymous> (/home/clem/fabric-samples/first-network/blockchain-explorer/node_modules/pg/lib/connection.js:122:10)
+    at emitNone (events.js:111:20)
+    at Socket.emit (events.js:208:7)
+    at endReadableNT (_stream_readable.js:1064:12)
+    at _combinedTickCallback (internal/process/next_tick.js:138:11)
+    at process._tickCallback (internal/process/next_tick.js:180:9)
+<<<<<<<<<<<<<<<<<<<<<<<<<< Synchronizer Error >>>>>>>>>>>>>>>>>>>>>
+Error: Connection terminated unexpectedly
+    at Connection.con.once (/home/clem/fabric-samples/first-network/blockchain-explorer/node_modules/pg/lib/client.js:179:21)
+    at Object.onceWrapper (events.js:313:30)
+    at emitNone (events.js:106:13)
+    at Connection.emit (events.js:208:7)
+    at Socket.<anonymous> (/home/clem/fabric-samples/first-network/blockchain-explorer/node_modules/pg/lib/connection.js:122:10)
+    at emitNone (events.js:111:20)
+    at Socket.emit (events.js:208:7)
+    at endReadableNT (_stream_readable.js:1064:12)
+    at _combinedTickCallback (internal/process/next_tick.js:138:11)
+    at process._tickCallback (internal/process/next_tick.js:180:9)
+<<<<<<<<<<<<<<<<<<<<<<<<<< Closing client processor >>>>>>>>>>>>>>>>>>>>>

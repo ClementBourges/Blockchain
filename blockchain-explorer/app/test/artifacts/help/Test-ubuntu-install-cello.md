@@ -1,6 +1,6 @@
 #Fabric Cluster started using Hyperledger Cello and configure to Explorer
 
-##Master Node (  <YOUR IP>)
+##Master Node (  172.24.200.218)
 
 1. git clone http://gerrit.hyperledger.org/r/cello && cd cello
 
@@ -9,11 +9,11 @@
 3. sudo make start
 
 
-##Worker Node  ( <YOUR IP>)
+##Worker Node  ( 172.24.200.103)
 
 1. sudo systemctl stop docker.service
 
-2. sudo dockerd -H tcp://<YOUR IP>:2375 -H unix:///var/run/docker.sock --api-cors-header='*' --default-ulimit=nofile=8192:16384 --default-ulimit=nproc=8192:16384 -D &
+2. sudo dockerd -H tcp://172.24.200.103:2375 -H unix:///var/run/docker.sock --api-cors-header='*' --default-ulimit=nofile=8192:16384 --default-ulimit=nproc=8192:16384 -D &
 
 3.git clone http://gerrit.hyperledger.org/r/cello && cd cello
 
@@ -21,7 +21,7 @@
 
 ##Verify docker is running from Master Node
 
-1. docker -H <YOUR IP>:2375 info
+1. docker -H 172.24.200.103:2375 info
 
 ##Verify Peer is running and get Ip to configure in explorer from Worker Node
 
@@ -48,8 +48,8 @@ ed09a52dba0e hyperledger/fabric-orderer:1.1.0 "orderer" About an hour ago Up Abo
 			"name": "peerOrg1",
 			"mspid": "Org1MSP",
 			"peer1": {
-				"requests": "grpc://127.0.0.1:7150",
-				"events": "grpc://127.0.0.1:7050",
+				"requests": "grpcs://127.0.0.1:7150",
+				"events": "grpcs://127.0.0.1:7050",
 				"server-hostname": "peer0.org1.example.com",
 				"tls_cacerts": "/opt/cello/fabric-1.1/crypto-config/peerOrganizations/org1.example.com/peers/peer0.org1.example.com/tls/ca.crt"
 			},			
@@ -64,7 +64,7 @@ ed09a52dba0e hyperledger/fabric-orderer:1.1.0 "orderer" About an hour ago Up Abo
 				{
 				"mspid": "OrdererMSP",
 				"server-hostname":"orderer.example.com",
-				"requests":"grpc://127.0.0.1:8050",
+				"requests":"grpcs://127.0.0.1:8050",
 				"tls_cacerts":"/opt/cello/fabric-1.1/crypto-config/ordererOrganizations/example.com/orderers/orderer.example.com/tls/ca.crt"
 				}
 				],

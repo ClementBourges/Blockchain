@@ -12,19 +12,19 @@ const setup = () => {
         channel_genesis_hash:
           'f3ed9c95452b184a4d5d66e25ba47f866ad6907a31f28f8067ca5596f64d8e0f',
         name: 'mychannel',
-        requests: 'grpc://127.0.0.1:7051',
+        requests: 'grpcs://127.0.0.1:7051',
         server_hostname: 'peer0.org1.example.com'
       },
       {
-        requests: 'grpc://127.0.0.1:8051',
+        requests: 'grpcs://127.0.0.1:8051',
         server_hostname: 'peer1.org1.example.com'
       },
       {
-        requests: 'grpc://127.0.0.1:9051',
+        requests: 'grpcs://127.0.0.1:9051',
         server_hostname: 'peer0.org2.example.com'
       },
       {
-        requests: 'grpc://127.0.0.1:10051',
+        requests: 'grpcs://127.0.0.1:10051',
         server_hostname: 'peer1.org2.example.com'
       }
     ]
@@ -76,25 +76,25 @@ describe('Peers', () => {
     expect(
       wrapper
         .find('TdComponent')
-        .findWhere(n => n.contains('grpc://127.0.0.1:7051'))
+        .findWhere(n => n.contains('grpcs://127.0.0.1:7051'))
         .exists()
     ).toBe(true);
     expect(
       wrapper
         .find('TdComponent')
-        .findWhere(n => n.contains('grpc://127.0.0.1:8051'))
+        .findWhere(n => n.contains('grpcs://127.0.0.1:8051'))
         .exists()
     ).toBe(true);
     expect(
       wrapper
         .find('TdComponent')
-        .findWhere(n => n.contains('grpc://127.0.0.1:9051'))
+        .findWhere(n => n.contains('grpcs://127.0.0.1:9051'))
         .exists()
     ).toBe(true);
     expect(
       wrapper
         .find('TdComponent')
-        .findWhere(n => n.contains('grpc://127.0.0.1:10051'))
+        .findWhere(n => n.contains('grpcs://127.0.0.1:10051'))
         .exists()
     ).toBe(true);
   });
@@ -123,7 +123,7 @@ describe('Peers', () => {
     const { wrapper, props } = setup();
     const { peerList } = props;
     const peer = {
-      requests: 'grpc://127.0.0.1:7051',
+      requests: 'grpcs://127.0.0.1:7051',
       server_hostname: 'peer0.org1.example.com'
     };
     peerList.push(peer);
