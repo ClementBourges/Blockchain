@@ -132,8 +132,20 @@ app.get('/', function(req, res) {
 
 app.post('/signe', (req, res) => {
   var key = req.body.key_to_sign
-  console.log(key)
-  //
+  var crypto = require('crypto');
+  // change the algo to sha1, sha256 etc according to your requirements
+  var algo = 'sha256';
+  var shasum = crypto.createHash(algo);
+  var file = '../public/feuilles/'+key+'.jpg';
+  var s = fs.ReadStream(file);
+  var hash="";
+  s.on('data', function(d) { shasum.update(d); });
+  s.on('end', function() {
+  var hash = shasum.digest('hex');
+  console.log("hash du fichier:"+hash)
+  if (hash==req.body.hash)
+  {
+  console.log("hash enregistré par l'organisme:"+req.body.hash)
   var member_user = null;
   var tx_id = null;
 
@@ -166,8 +178,7 @@ app.post('/signe', (req, res) => {
   	// createCar chaincode function - requires 5 args, ex: args: ['CAR12', 'Honda', 'Accord', 'Black', 'Tom'],
   	// changeCarOwner chaincode function - requires 2 args , ex: args: ['CAR10', 'Dave'],
   	// must send the proposal to endorsing peers
-    console.log(cledispo)
-    var clee='FOR'+ cledispo.toString()
+
   	var request = {
   		//targets: let default to the peer assigned to the client
   		chaincodeId: 'formation',
@@ -176,7 +187,6 @@ app.post('/signe', (req, res) => {
   		chainId: 'mychannel',
   		txId: tx_id
   	};
-    console.log(request);
 
   	// send the transaction proposal to the peers
   	return channel.sendTransactionProposal(request);
@@ -272,6 +282,13 @@ app.post('/signe', (req, res) => {
   	console.error('Failed to invoke successfully :: ' + err);
   });
   res.redirect('/');
+}
+else {
+  res.setHeader('Content-Type', 'text/plain');
+  res.send("Le fichier stocké est différent de celui créé par l'organisme lors de sa création.");
+}
+
+  });
 });
 
 app.use(function(req, res, next){

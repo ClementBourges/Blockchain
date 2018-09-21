@@ -42,13 +42,13 @@ import (
 type SmartContract struct {
 }
 
-// Define the car structure, with 4 properties.  Structure tags are used by encoding/json library
 type Formation struct {
 	Ident string `json:"Ident"`
 	Description string `json:Description`
 	Date   string `json:"Date"`
 	Formateur  string `json:"Formateur"`
 	Volume string `json:"Volume"`
+	Fichier string `json:Fichier`
 	Signature string `json:"Signature"`
 }
 
@@ -85,11 +85,11 @@ func (s *SmartContract) Invoke(APIstub shim.ChaincodeStubInterface) sc.Response 
 func (s *SmartContract) Init(APIstub shim.ChaincodeStubInterface) sc.Response {
 	var err error
 	formations := []Formation{
-		Formation{Ident:"EL/B084", Description: " Risques et mesures de prévention électrique<br>- Analyser les risques électriques <br>- Identifier les moyens de protections collectifs et individuels", Date: "2017-01-01", Formateur: "Alice", Volume: "7", Signature: "\u26A0"},
-		Formation{Ident:"EL/A045", Description: " Réaliser un câblage électrique<br>- Acquérir des notions réglementaires en câblage<br>- Comprendre et interpréter les schémas électriques<br>- Réaliser des câblages électriques d'installations simples de type locaux d'habitation et armoire machine", Date: "2017-01-01", Formateur: "Bob", Volume: "1", Signature: "\u26A0"},
-		Formation{Ident:"EL/A042", Description: " Règles applicables au courant triphasé<br>-- Différencier et mesurer les grandeurs de base en courant alternatif triphasé<br>- Reconnaître les matériels électriques triphasés<br>- Concevoir et câbler des montages électriques usuels", Date: "2017-01-01", Formateur: "Charlie", Volume: "2", Signature: "\u26A0"},
-		Formation{Ident:"PI/S052", Description: " Savoir évacuer en sécurité en cas d'incendie<br>- Organiser et diriger une évacuation<br>- Mettre en œuvre les consignes et procédures de l’établissement", Date: "2017-01-01", Formateur: "Dave", Volume: "1.5", Signature: "\u26A0"},
-		Formation{Ident:"PR/C004", Description: " Évaluer la pénibilité au travail<br>- Connaître les enjeux d’une démarche de prévention de la pénibilité au travail<br>- Connaître les évolutions réglementaires sur la thématique de la pénibilité<br>- Identifier les conditions de mise en œuvre de méthodologies d’évaluation des facteurs de risques", Date: "2017-01-01", Formateur: "Eve", Volume: "0.5", Signature: "\u26A0"},
+		Formation{Ident:"EL/B084", Description: " Risques et mesures de prévention électrique<br>- Analyser les risques électriques <br>- Identifier les moyens de protections collectifs et individuels", Date: "2017-01-01", Formateur: "Alice", Volume: "7", Fichier: "42213797a5a7e38db9b79df1914d83ba49290487f82dc320644457e2b3ec182b", Signature: "\u26A0"},
+		Formation{Ident:"EL/A045", Description: " Réaliser un câblage électrique<br>- Acquérir des notions réglementaires en câblage<br>- Comprendre et interpréter les schémas électriques<br>- Réaliser des câblages électriques d'installations simples de type locaux d'habitation et armoire machine", Date: "2017-01-01", Formateur: "Bob", Volume: "1", Fichier: "42213797a5a7e38db9b79df1914d83ba49290487f82dc320644457e2b3ec182b", Signature: "\u26A0"},
+		Formation{Ident:"EL/A042", Description: " Règles applicables au courant triphasé<br>- Différencier et mesurer les grandeurs de base en courant alternatif triphasé<br>- Reconnaître les matériels électriques triphasés<br>- Concevoir et câbler des montages électriques usuels", Date: "2017-01-01", Formateur: "Charlie", Volume: "2", Fichier: "42213797a5a7e38db9b79df1914d83ba49290487f82dc320644457e2b3ec182b", Signature: "\u26A0"},
+		Formation{Ident:"PI/S052", Description: " Savoir évacuer en sécurité en cas d'incendie<br>- Organiser et diriger une évacuation<br>- Mettre en œuvre les consignes et procédures de l’établissement", Date: "2017-01-01", Formateur: "Dave", Volume: "1.5", Fichier: "42213797a5a7e38db9b79df1914d83ba49290487f82dc320644457e2b3ec182b", Signature: "\u26A0"},
+		Formation{Ident:"PR/C004", Description: " Évaluer la pénibilité au travail<br>- Connaître les enjeux d’une démarche de prévention de la pénibilité au travail<br>- Connaître les évolutions réglementaires sur la thématique de la pénibilité<br>- Identifier les conditions de mise en œuvre de méthodologies d’évaluation des facteurs de risques", Date: "2017-01-01", Formateur: "Eve", Volume: "0.5", Fichier: "42213797a5a7e38db9b79df1914d83ba49290487f82dc320644457e2b3ec182b", Signature: "\u26A0"},
 	}
 
 	i := 0
@@ -124,11 +124,11 @@ func (s *SmartContract) queryFormation(APIstub shim.ChaincodeStubInterface, args
 
 func (s *SmartContract) createFormation(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
 
-	if len(args) != 6 {
-		return shim.Error("Incorrect number of arguments. Expecting 6")
+	if len(args) != 7 {
+		return shim.Error("Incorrect number of arguments. Expecting 7")
 	}
 
-	var formation = Formation{Ident: args[1], Description: args[2], Date: args[3], Formateur: args[4], Volume: args[5], Signature: "\u26A0"}
+	var formation = Formation{Ident: args[1], Description: args[2], Date: args[3], Formateur: args[4], Volume: args[5], Fichier: args[6], Signature: "\u26A0"}
 
 	formationAsBytes, _ := json.Marshal(formation)
 	APIstub.PutState(args[0], formationAsBytes)

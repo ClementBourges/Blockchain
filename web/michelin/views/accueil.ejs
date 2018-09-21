@@ -13,6 +13,16 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+  <link rel="stylesheet" href="http://cdn.datatables.net/1.10.2/css/jquery.dataTables.min.css">
+
+  <script type="text/javascript" src="http://cdn.datatables.net/1.10.2/js/jquery.dataTables.min.js"></script>
+  <script>
+$(document).ready(function(){
+  $('#myTable').dataTable({"searching": false, "paging": false, "bInfo" : false, "columnDefs": [{"defaultContent": "-","targets": "_all"}]});
+
+});
+</script>
+
 </head>
 <body>
 
@@ -32,7 +42,7 @@
                    </tr>
          </div>
         <div class="table-responsive">
-              <table id="myTable" class="table table-bordred table-striped">
+              <table id="myTable" class="table table-bordred table-striped display">
                   <thead align=center>
                    <th>Code formation</th><th>Description</th><th>Date</th><th>Formateur</th><th>Volume</th><th>Fichier</th><th>Signature</th><th>&Agrave; signer</th>
                   </thead>
@@ -47,7 +57,7 @@
                       <td align=center><a href=<%='../feuilles/'+ tabl[i].Key +'.jpg'%>><FONT SIZE="6">&#128196;</FONT></></td>
                       <td align=center> <% if(tabl[i].Record.Signature != "\u2718") { %>
                                                     <FONT COLOR="RED" SIZE="6"><%= tabl[i].Record.Signature %></FONT></td>
-                                                    <td class=vert-align align=center width=150><form  method="post" action="signe"><button type="submit" class="btn btn-default btn-sm btn-success" name=key_to_sign value= "<%= tabl[i].Key %>" onclick="document.location.href='/';" vertical-align=middle >Signer</button></form></td>
+                                                    <td class=vert-align align=center width=150><form  method="post" action="signe"><input type="hidden" name="hash" value="<%= tabl[i].Record.Fichier %>" /><button type="submit" class="btn btn-default btn-sm btn-success" name=key_to_sign value= "<%= tabl[i].Key %>" vertical-align=middle >Signer</button></form></td>
                                                     <% }
                                                    else {%>
                                                     <FONT COLOR="GREEN" SIZE="6"><%= tabl[i].Record.Signature %></FONT></td>
@@ -57,6 +67,7 @@
                   </tbody>
 
               </table>
+              <br>
               <input type="button" value="Actualiser" class="btn btn-default" onclick="document.location.href='/';">
             </div>
           </div>
@@ -65,8 +76,6 @@
       <br>
   </body>
 </html>
-
-
 
 
 <script>

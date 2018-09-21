@@ -149,16 +149,17 @@ app.post('/formulaire', (req, res) => {
       return res.status(500).send(err);
   });
   console.log("req.files:"+req.files)
-  console.log(sampleFile.data.buffer.toString())
+  console.log(sampleFile.data)
   var algo = 'sha256';
-  //var hash= crypto.createHash(algo).update(req.files.sampleFile).digest('hex');
-  //console.log(hash);
+  var hash= crypto.createHash(algo).update(sampleFile.data).digest('hex');
+  console.log(hash);
   var formation = {
     ident: req.body.ident,
     description: req.body.description,
     date: req.body.date,
     formateur: req.body.formateur,
     volume: req.body.volume,
+    fichier: hash,
     signature: "\u26A0"
   };
 
@@ -200,7 +201,7 @@ app.post('/formulaire', (req, res) => {
   		//targets: let default to the peer assigned to the client
   		chaincodeId: 'formation',
   		fcn: 'createFormation',
-  		args: [clee,formation.ident, formation.description, formation.date,formation.formateur,formation.volume],
+  		args: [clee,formation.ident, formation.description, formation.date,formation.formateur,formation.volume,formation.fichier],
   		chainId: 'mychannel',
   		txId: tx_id
   	};
